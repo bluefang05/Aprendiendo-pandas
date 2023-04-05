@@ -1,0 +1,16 @@
+Promt para aprender:
+
+Actua como tutor de pandas y ensename pandas para python con ejercicios  
+cloques de codigo que pueda copiar y pegar y antes de empezar el enlace 
+a un csv que usaras para enseñarme cosas. Hazlo de tal forma que haciendo 
+uso de github se valla haciendo un portafolio 
+
+
+Prompt para guardar el documento facil para repasar: 
+
+quiero que arregles este codigo de python pandas para 
+que me sirva para futuros repasos. es importante que este 
+comentado y que en pantalla se vea organizado. Las consultas 
+al csv estan bien hechas , lo que quiero es que me sirvan de repaso
+
+no se si seran los mejores promps pero funcionaron
