@@ -1,45 +1,63 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Leer el archivo CSV y convertirlo en un DataFrame
 df = pd.read_csv('titanic.csv')
-
-# Identificar filas con datos faltantes en la columna "Age"
-null_age = df[df['Age'].isnull()]
 
 # Rellenar los valores faltantes en la columna "Age" con el valor medio de la columna
 mean_age = df['Age'].mean()
 df['Age'] = df['Age'].fillna(mean_age)
 
-print('\nEdades del DataFrame después de rellenar los valores faltantes:')
-print('----------------------------------------------------------------')
-print(df['Age'])
-
-# Crear una nueva figura para la distribución de edades
+# Crear una nueva figura para la distribución de edades usando matplotlib
 plt.figure()
-plt.title('Distribución de edades en el conjunto de datos')
+plt.title('Histograma de la distribución de edades en el Titanic (matplotlib)')
 df['Age'].plot.hist()
 
-# Crear una nueva figura para la relación entre la edad y la tarifa pagada por el pasaje
+# Crear una nueva figura para la distribución de edades usando seaborn
 plt.figure()
-plt.title('Relación entre la edad y la tarifa pagada por el pasaje')
-df.plot.scatter(x='Age', y='Fare')
+plt.title('Histograma de la distribución de edades en el Titanic (seaborn)')
+sns.histplot(data=df, x='Age')
 
-# Crear una nueva figura para el gráfico de línea de la columna "Age"
+# Crear una nueva figura para la relación entre la edad y la tarifa pagada por el pasaje usando matplotlib
 plt.figure()
-plt.title('Gráfico de línea de la columna "Age"')
+plt.title('Relación entre la edad y la tarifa pagada por el pasaje (matplotlib)')
+plt.scatter(df['Age'], df['Fare'])
+
+# Crear una nueva figura para la relación entre la edad y la tarifa pagada por el pasaje usando seaborn
+plt.figure()
+plt.title('Relación entre la edad y la tarifa pagada por el pasaje (seaborn)')
+sns.scatterplot(data=df, x='Age', y='Fare', hue='Survived')
+
+# Crear una nueva figura para el gráfico de línea de la columna "Age" usando matplotlib
+plt.figure()
+plt.title('Gráfico de línea de la columna "Age" (matplotlib)')
 df['Age'].plot.line()
+
+# Crear una nueva figura para el gráfico de línea de la columna "Age" usando seaborn
+plt.figure()
+plt.title('Gráfico de línea de la columna "Age" (seaborn)')
+sns.lineplot(data=df, x=df.index, y='Age')
+
+# Crear una nueva figura para la supervivencia por género usando matplotlib
+plt.figure()
+plt.title('Supervivencia por género (matplotlib)')
+df.groupby(['Sex', 'Survived']).size().unstack().plot.bar()
+
+# Crear una nueva figura para la supervivencia por género usando seaborn
+plt.figure()
+plt.title('Supervivencia por género (seaborn)')
+sns.countplot(data=df, x='Sex', hue='Survived')
+
+# Crear una nueva figura para la supervivencia por clase usando matplotlib
+plt.figure()
+plt.title('Supervivencia por clase de pasajero (matplotlib)')
+df.groupby(['Pclass', 'Survived']).size().unstack().plot.bar()
+
+# Crear una nueva figura para la supervivencia por clase usando seaborn
+plt.figure()
+plt.title('Supervivencia por clase de pasajero (seaborn)')
+sns.countplot(data=df, x='Pclass', hue='Survived')
 
 # Mostrar todas las figuras
 plt.show()
-
-# Este código realiza las siguientes acciones:
-
-#     Importa las bibliotecas pandas y matplotlib.pyplot.
-#     Lee el archivo 'titanic.csv' y lo convierte en un DataFrame.
-#     Identifica filas con datos faltantes en la columna 'Age' y rellena los valores faltantes con el valor medio de la columna.
-#     Muestra las edades del DataFrame después de rellenar los valores faltantes.
-#     Crea una nueva figura y grafica la distribución de edades en el conjunto de datos.
-#     Crea una nueva figura y grafica la relación entre la edad y la tarifa pagada por el pasaje.
-#     Crea una nueva figura y grafica la columna 'Age' como un gráfico de línea.
-#     Muestra todas las figuras.
