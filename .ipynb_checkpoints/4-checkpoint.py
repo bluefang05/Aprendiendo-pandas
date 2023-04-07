@@ -61,11 +61,3 @@ sns.countplot(data=df, x='Pclass', hue='Survived')
 
 # Mostrar todas las figuras
 plt.show()
-
-
-# Este código realiza las siguientes acciones:
-
-#     Importa las bibliotecas pandas, matplotlib.pyplot y seaborn.
-#     Lee el archivo 'titanic.csv' y lo convierte en un DataFrame.
-#     Rellena los valores faltantes en la columna 'Age' con el valor medio de la columna.
-#     Crea varias figuras para mostrar distintos aspectos del conjunto de datos utilizando tanto matplotlib como seaborn, incluyendo histogramas, gráficos de dispersión
